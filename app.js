@@ -31,6 +31,19 @@ const mockData = {
     ],
     link: 'https://github.com/lernantino/taskinator',
     feature: false
+  },
+  {
+    name: 'Taskmaster Pro',
+    description: 'Task management site',
+    languages: [
+      'HTML',
+      'CSS',
+      'JavaScript',
+      'JQuery',
+      'Bootstrap'
+    ],
+    link: 'https://github.com/lernantino/taskmaster-pro',
+    feature: true
   }]
 };
 
@@ -174,9 +187,19 @@ promptUser()
     const pageHTML = generatePage(mockData);   // should run function with portfolioData
 
     // create HTML file from pageHTML output
-    fs.writeFile('./index.html', pageHTML, err => {
-      if (err) throw new err;
-
-      console.log('Portfolio complete! Check out index.html to see the output!');
+    fs.writeFile('./dist/index.html', pageHTML, err => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      console.log('Page created! Check out index.html in this directory to see it!');
+    
+      fs.copyFile('./src/style.css', './dist/style.css', err => {
+        if (err) {
+          console.log(err);
+          return;
+        }
+        console.log('Style sheet copied successfully!');
+      });
     });
   });
