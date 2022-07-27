@@ -18,7 +18,8 @@ const mockData = {
       'HTML', 
       'CSS'
     ],
-    link: 'https://github.com/lernantino/run-buddy'
+    link: 'https://github.com/lernantino/run-buddy',
+    feature: true
   },
   {
     name: 'Taskinator',
@@ -28,7 +29,8 @@ const mockData = {
       'CSS',
       'JavaScript'
     ],
-    link: 'https://github.com/lernantino/taskinator'
+    link: 'https://github.com/lernantino/taskinator',
+    feature: false
   }]
 };
 
