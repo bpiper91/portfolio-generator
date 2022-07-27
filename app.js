@@ -1,21 +1,36 @@
 // load inquirer module (npm package)
 const inquirer = require('inquirer');
 
-// // call file system module (core library module)
-// const fs = require('fs');
+// call file system module (core library module)
+const fs = require('fs');
 
-// // take input data from the page template file
-// const generatePage = require('./src/page-template.js');
+// take input data from the page template file
+const generatePage = require('./src/page-template.js');
 
-// // get the name and GitHub username from the input text
-// const pageHTML = generatePage(name, github);
-
-// // create HTML file from pageHTML output
-// fs.writeFile('./index.html', pageHTML, err => {
-//   if (err) throw new err;
-
-//   console.log('Portfolio complete! Check out index.html to see the output!');
-// });
+// for testing purposes, DELETE LATER
+const mockData = {
+  name: 'Lernantino',
+  github: 'lernantino',
+  projects: [{
+    name: 'Run Buddy',
+    description: 'Running website',
+    languages: [
+      'HTML', 
+      'CSS'
+    ],
+    link: 'https://github.com/lernantino/run-buddy'
+  },
+  {
+    name: 'Taskinator',
+    description: 'Task management site',
+    languages: [
+      'HTML',
+      'CSS',
+      'JavaScript'
+    ],
+    link: 'https://github.com/lernantino/taskinator'
+  }]
+};
 
 // user profile questions
 const promptUser = () => {
@@ -73,13 +88,13 @@ const promptProject = portfolioData => {
   if (!portfolioData.projects) {
     portfolioData.projects = [];
   };
-  
+
   console.log(`
   =================
   Add a New Project
   =================
   `);
-    return inquirer
+  return inquirer
     .prompt([
       {
         type: 'input',
@@ -153,5 +168,13 @@ const promptProject = portfolioData => {
 promptUser()
   .then(promptProject)
   .then(portfolioData => {
-    console.log(portfolioData);
+    // get the name and GitHub username from the input text
+    const pageHTML = generatePage(mockData);   // should run function with portfolioData
+
+    // create HTML file from pageHTML output
+    fs.writeFile('./index.html', pageHTML, err => {
+      if (err) throw new err;
+
+      console.log('Portfolio complete! Check out index.html to see the output!');
+    });
   });
