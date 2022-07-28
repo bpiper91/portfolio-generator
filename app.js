@@ -1,11 +1,12 @@
 // load inquirer module (npm package)
 const inquirer = require('inquirer');
 
-// call file system module (core library module)
-const fs = require('fs');
-
 // take input data from the page template file
 const generatePage = require('./src/page-template.js');
+
+// take functions from the site generation file
+  // destructure object to create variables for each function
+const { writeFile, copyFile } = require('./utils/generate-site.js');
 
 // for testing purposes, DELETE LATER
 const mockData = {

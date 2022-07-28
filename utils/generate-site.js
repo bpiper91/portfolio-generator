@@ -40,3 +40,6 @@ const copyFile = () => {
         });
     });
 };
+
+// export functions as a single object using shorthand property names
+module.exports = { writeFile, copyFile };
